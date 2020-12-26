@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata:
+  name: my-database 
+spec:
+  selector:
+    matchLabels:
+      run: my-database
+  replicas: 2
+  template:
+    metadata:
+      name: my-database-pod
+      labels:
+        run: my-database
+    spec:
+      containers:
+      - name: some-mariadb 
+        image: mariadb:latest
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: dbsecret
+              key: password.txt 
