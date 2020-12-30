@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-database 
+spec:
+  containers:
+  - name: some-mariadb 
+    image: mariadb:latest
+    env:
+    - name: MYSQL_ROOT_PASSWORD 
+      valueFrom:
+        secretKeyRef:
+          name: dbsecret        
+          key: password.txt    

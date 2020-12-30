@@ -4,7 +4,7 @@ metadata:
   name: my-mysql-database
   labels:
     app: payment
- spec:
+spec:
   selector:
     matchLabels:
       app: payment
